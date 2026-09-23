@@ -12,6 +12,6 @@ void prints();
 int addContact(Contact *replace);
 int searchContact(Contact *replace);
 int displayAllContacts(Contact *replace);
-int deleteContact(Contact *replace);
+int deleteContacts(Contact *replace);
 
 #endif

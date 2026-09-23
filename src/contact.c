@@ -55,7 +55,7 @@ int displayAllContacts(Contact *replace)
 }
 
 
-int deleteContact(Contact *replace)
+int deleteContacts(Contact *replace)
 {
   return 0;
 }
