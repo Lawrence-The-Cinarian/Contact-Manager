@@ -45,17 +45,17 @@ int addContact(Contact *replace)
 
 int searchContact(Contact *replace)
 {
-  
+  return 0;
 }
 
 
 int displayAllContacts(Contact *replace)
 {
-  
+  return 0;
 }
 
 
 int deleteContact(Contact *replace)
 {
-  
+  return 0;
 }

@@ -31,7 +31,7 @@ int main(void)
       
       case 3:
       puts("");
-      displayAllContact(&file);
+      displayAllContacts(&file);
       break;
       
       case 4:
