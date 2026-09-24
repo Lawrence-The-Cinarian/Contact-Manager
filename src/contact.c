@@ -4,7 +4,7 @@
 
 void prints()
 {
-  puts("Contact Manager"); 
+  puts("Contact Manager");
   puts("");
   puts("1. Add contact");
   puts("2. Search contact");
@@ -26,7 +26,7 @@ int addContact(Contact *replace)
   printf("Enter contact email: ");
   fgets(replace->email, sizeof(replace->email), stdin);
   replace->email[strcspn(replace->email, "\n")] = '\0';
-  
+
   FILE *open_file;
   open_file = fopen("contact.csv", "a");
   if(open_file == NULL)
@@ -36,7 +36,7 @@ int addContact(Contact *replace)
     return 1;
   }
   fprintf(open_file, "Name,Phone Number,E-mail\n");
-  fprintf(open_file, "%s,%s,%s\n", replace->name, replace->phoneNumber, replace->email);
+  fprintf(open_file, "%s,%s,%s\n\n", replace->name, replace->phoneNumber, replace->email);
   fclose(open_file);
   puts("Saved to contact.csv");
   return 0;
@@ -57,5 +57,16 @@ int displayAllContacts(Contact *replace)
 
 int deleteContacts(Contact *replace)
 {
-  return 0;
+  if(remove("contact.csv") == 0)
+  {
+  puts("");
+  puts("File successfully deleted");
+  return 1;
+  }
+  else
+  {
+  puts("No such file exist");
+  perror("Reason");
+  return 1;
+  }
 }
