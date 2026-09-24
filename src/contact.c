@@ -35,16 +35,16 @@ int addContact(Contact *replace)
     puts("Error opening file");
     return 1;
   }
-  
+
   fseek(open_file, 0, SEEK_END);
   long check = ftell(open_file);
-  
+
   if(check == 0)
   {
   fprintf(open_file, "Name,Phone Number,E-mail\n");
   }
-  
-  fprintf(open_file, "%s,%s,%s\n\n", replace->name, replace->phoneNumber, replace->email);
+
+  fprintf(open_file, "%s,%s,%s\n", replace->name, replace->phoneNumber, replace->email);
   fclose(open_file);
   puts("Saved to contact.csv");
   return 0;
@@ -59,6 +59,12 @@ int searchContact(Contact *replace)
 
 int displayAllContacts(Contact *replace)
 {
+  FILE *display_file;
+  display_file = fopen("contact.csv", "r");
+  if(display_file == NULL)
+  {
+  
+  }
   return 0;
 }
 
