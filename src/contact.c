@@ -53,6 +53,21 @@ int addContact(Contact *replace)
 
 int searchContact(Contact *replace)
 {
+  printf("Enter the name contact you're searching for: ");
+  fgets(replace->name, sizeof(replace->name), stdin);
+  replace->name[strcspn(replace->name, "\n")] = '\0';
+  
+  FILE *search_file;
+  search_file = fopen("contact.csv", "r");
+  if(strcmp("contact.csv", replace->name) == 0)
+  {
+    puts("No contact in that form exist");
+    return 1;
+  }
+  else
+  {
+    printf("%s,%s,%s\n", replace->name, replace->phoneNumber, replace->email);
+  }
   return 0;
 }
 
@@ -63,7 +78,13 @@ int displayAllContacts(Contact *replace)
   display_file = fopen("contact.csv", "r");
   if(display_file == NULL)
   {
-  
+    puts("No such file exist");
+    return 1;
+  }
+  printf("Name,Phone Number,E-mail\n");
+  while(fscanf(display_file, "%s,%s,%s\n", replace->name, replace->phoneNumber, replace->email)
+  {
+    printf("%s,%s,%s\n", replace->name, replace->phoneNumber, replace->email);
   }
   return 0;
 }
