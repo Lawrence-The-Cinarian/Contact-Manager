@@ -53,21 +53,38 @@ int addContact(Contact *replace)
 
 int searchContact(Contact *replace)
 {
+  char searchName[50];
   printf("Enter the name contact you're searching for: ");
-  fgets(replace->name, sizeof(replace->name), stdin);
-  replace->name[strcspn(replace->name, "\n")] = '\0';
-  
-  FILE *search_file;
-  search_file = fopen("contact.csv", "r");
-  if(strcmp("contact.csv", replace->name) == 0)
+  fgets(searchName, sizeof(searchName), stdin);
+  searchName[strcspn(searchName, "\n")] = '\0';
+
+  FILE *search_file = fopen("contact.csv", "r");
+  if(search_file == NULL)
   {
-    puts("No contact in that form exist");
+    puts("No such file exist");
     return 1;
   }
-  else
+
+  int found = 0;  // flag: did we find it?
+  
+  // Read through file line by line
+  while(fscanf(search_file, "%49[^,],%19[^,],%49s", replace->name, replace->phoneNumber, replace->email) == 3)
   {
-    printf("%s,%s,%s\n", replace->name, replace->phoneNumber, replace->email);
+    // Compare THIS contact's name with search name
+    if(strcmp(replace->name, searchName) == 0)
+    {
+      printf("%s,%s,%s\n", replace->name, replace->phoneNumber, replace->email);
+      found = 1;  // mark as found
+      break;      // stop searching
+    }
   }
+  
+  if(!found)
+  {
+    puts("No contact in that form exist");
+  }
+  
+  fclose(search_file);
   return 0;
 }
 
@@ -82,7 +99,7 @@ int displayAllContacts(Contact *replace)
     return 1;
   }
   printf("Name,Phone Number,E-mail\n");
-  while(fscanf(display_file, "%s,%s,%s\n", replace->name, replace->phoneNumber, replace->email)
+  while(fscanf(display_file, "%49s,%19s,%49s\n", replace->name, replace->phoneNumber, replace->email)
   {
     printf("%s,%s,%s\n", replace->name, replace->phoneNumber, replace->email);
   }
