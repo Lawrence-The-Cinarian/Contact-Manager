@@ -31,10 +31,11 @@ gcc {main,contact}.c -o main && ./main
 
 To check if your prompts or information was saved, Run this
 ```
-nano contact.txt
+nano contact.csv
 ```
 Then to exit the editor, press this on your keyboard..
 ```CTRL + X```, then ```Y```, and press ```Enter```
+Best to view via Excel or any CSV file.
 
 # Contribution
 Any body can contribute to this project, as it's open sourced
