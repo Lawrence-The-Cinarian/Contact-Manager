@@ -16,12 +16,12 @@ Note: I use a Linux based environment (mostly Ubuntu and Termux) but any Linux b
 
 First is to clone it by
 ```
-git clone https://github.com/APUTAZIE/cpe_club_security_analysis.git
+git clone https://github.com/Lawrence-The-Cinarian/Contact-Manager.git
 ```
 
 Next change directory 
 ```
-cd cpe_club_security_analysis/'Contacts Manager'
+cd Contact-Manager/src
 ```
 
 Then finally run this
